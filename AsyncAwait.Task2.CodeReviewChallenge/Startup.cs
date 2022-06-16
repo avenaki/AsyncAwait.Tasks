@@ -1,6 +1,6 @@
 ﻿using AsyncAwait.Task2.CodeReviewChallenge.Extensions;
-using AsyncAwait.Task2.CodeReviewChallenge.Models.Support;
-using AsyncAwait.Task2.CodeReviewChallenge.Services;
+using AsyncAwait.Task2.CodeReviewChallenge.Services.Implementations;
+using AsyncAwait.Task2.CodeReviewChallenge.Services.Interfaces;
 using CloudServices;
 using CloudServices.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -41,8 +41,9 @@ public class Startup
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        if (false && env.IsDevelopment())
+        if (env.IsDevelopment())
             app.UseDeveloperExceptionPage();
+
         app.UseExceptionHandler("/Home/Error");
 
         app.UseStatistic();

@@ -2,8 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using AsyncAwait.Task2.CodeReviewChallenge.Models;
-using AsyncAwait.Task2.CodeReviewChallenge.Models.Support;
-using AsyncAwait.Task2.CodeReviewChallenge.Services;
+using AsyncAwait.Task2.CodeReviewChallenge.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AsyncAwait.Task2.CodeReviewChallenge.Controllers;
@@ -25,15 +24,15 @@ public class HomeController : Controller
         return View();
     }
 
-    public ActionResult Privacy()
+    public async Task<ActionResult> Privacy()
     {
-        ViewBag.Message = _privacyDataService.GetPrivacyDataAsync().Result;
+        ViewBag.Message = await _privacyDataService.GetPrivacyDataAsync();
         return View();
     }
 
     public async Task<IActionResult> Help()
     {
-        ViewBag.RequestInfo = await _assistant.RequestAssistanceAsync("guest").ConfigureAwait(false);
+        ViewBag.RequestInfo = await _assistant.RequestAssistanceAsync("guest");
         return View();
     }
 

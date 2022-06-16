@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\CloudServices\CloudServices.csproj"/>
+        <ProjectReference Include="..\CloudServices\CloudServices.csproj" />
     </ItemGroup>
 
 </Project>
